@@ -1,5 +1,5 @@
-latex-table-generator
-=====================
+latex-table-generator of data in a CSV file
+==============================================
 
 latex table generator with python script
 
