@@ -9,4 +9,5 @@ tex file.
 
 If there is no NULL error you can just comment out the first read and everything should be fine. 
 
-It uses the longtable package in latex and output an tex file. 
+It uses the longtable package in latex and output an tex file. So include \usepackage{longtable} in the preamble
+for your latex project.
