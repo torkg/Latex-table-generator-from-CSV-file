@@ -12,12 +12,20 @@ import csv
 
 file = 'forsok1_1.csv'
 data_startline = 13
-data_stopline = -1
+data_stopline = 20
+
+# list the cols to be read
+col_list = [2,3,4,5]
+
 col_start = 2
 col_stop = 5
+
+
 delimiter = ';'
 caption = "Raadata til forsok 2"
 label = "tab: forsok2raw"
+
+
 
 #file = 'forsok1_1 (copy).csv'; data_startline = 13; data_stopline = -1; col_start = 2; col_stop = 6; delimiter = ';' ;caption = "Raadata til forsok 2"; label = "tab: forsok2raw"
 
@@ -40,15 +48,15 @@ def ReadCSV( file ):
     # Block to revmove NULL byte Error char
     # This block is ruining the readfile after
     #--------------------------------------
-    infile = open(file, 'rb')
-    data = infile.read()
-    infile.close()
+    #infile = open(file, 'rb')
+    #data = infile.read()
+    #infile.close()
     
-    outfile = open(file, 'wb')
-    outfile.write( data.replace('\x00', '') )
+    #outfile = open(file, 'wb')
+    #outfile.write( data.replace('\x00', '') )
     #outfile.write( data.replace('\xff', '') )
     #outfile.write( data.replace('\xfe', '') )
-    outfile.close()
+    #outfile.close()
     #---------------------------------
 
     #---------------------------------
@@ -114,6 +122,7 @@ def ColNames():
 # writes the tex code to start longtable
 #--------------------------------------------
 num_cols = col_stop - col_start + 1
+#numcols = len(col_list)
 nc = " c " * num_cols 
 
 start_table = """\\begin{center} 
@@ -123,12 +132,10 @@ start_table = """\\begin{center}
 
 outfile.write(start_table)
 
-# writes the col titles
-if csv:
-    col_names = lines[data_startline-1][col_start:col_stop+1]
+# writes the col title
+col_names = lines[data_startline-1][col_start:col_stop+1]
 
 outfile.write("\n\hline \n")
-
 
 ColNames() # writes the col names        
 outfile.write("\\hline")  
